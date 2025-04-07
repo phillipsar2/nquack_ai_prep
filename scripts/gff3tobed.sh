@@ -16,4 +16,4 @@ echo $databasename
 
 # mkdir repeat_database
 cut -f1,4,5 $databasename/repeat_database/*.gff3 | \
-perl -pi -e 's/ˆ#.*\n//g' > $databasename/repeat_database/$databasename.gff3.bed
+perl -pi -e 's/ˆ##.*\n//g' > $databasename/repeat_database/$databasename.gff3.bed
