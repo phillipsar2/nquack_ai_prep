@@ -10,15 +10,15 @@ Preparing the bam files associated with the PanAnd project for training in nQuac
 
 ## Project organization
 <pre>
-├── scripts
+├── scriptsi
 │   ├── README.md
-│   ├── gfftobed.sh		<- convert repeat annotation to bedfile 
-│   ├── 
+│   ├── gff3tobed.sh		<- convert gff3repeat annotation to bedfile 
+│   ├── maskbams.sh		<- mask bams using repeat bedfiles
 │   └── 
 ├── data 			<- folder for each species containing same structure
 │   ├── species
 │   |   ├── repeatdatabse	<- gff3 and related files 
-│   |   ├── maskedbams
+│   |   ├── repeats_removed	<- repeat-masked bams
 │   |   └── metadata
 │   └── structure
 ├── 
