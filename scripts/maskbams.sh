@@ -6,19 +6,26 @@
 #SBATCH -o /group/jrigrp11/aphillip/nquack_ai/slurm_log/stdoutput_mask_%a_%j.txt
 #SBATCH -p high2
 #SBATCH -t 2-00:00
-#SBATCH --mem 8G
-#SBATCH --array=0-1
+#SBATCH --mem 1G
+#SBATCH --array=0-173%20
 
 # Set database name
-species=("andropogon" "tripsacum")
-
-databasename="${species[$SLURM_ARRAY_TASK_ID]}"
+#species=("andropogon" "tripsacum")
+#databasename="${species[$SLURM_ARRAY_TASK_ID]}"
+databasename="andropogon"
 echo $databasename
 
-# Load list of bam files
-bamlist=
-
+# Load list of bam files from bamlist txt file into bam_array object
+bamlist=""$databasename"/processed_bamlist.txt"
 mapfile -t bam_array < $bamlist
+
+# Identify bam as the sample with the array number in bamlist
+bam="${bam_array[$SLURM_ARRAY_TASK_ID]}"
+#sample_name="${bam%.bam}"
+sample_name=$(echo "$bam" | sed 's|.*/||; s/\.dedup\.bam$//')
+
+echo $bam
+echo $sample_name
 
 # Load modules
 module load samtools # v1.19.2
@@ -26,11 +33,12 @@ module load samtools # v1.19.2
 #mkdir repeats_removed
 
 ## Remove Repeats from bams
-for i in "${bam_array[@]}"
-do
-	sample_name="${i%.bam}"
-	samtools view $i -b -h -o /dev/null \
-		-U $databasename/repeats_removed/$sample_name.bam \
-		-L $databasename/repeat_database/$databasename.gff.bed
-	echo "$i" "$sample_name"
-done
+#for i in "${bam_array[@]}"
+#do
+#	echo $i
+#	sample_name="${i%.bam}"
+	samtools view $bam -b -h -o /dev/null \
+		-U "$databasename"/repeats_removed/"$sample_name".masked.bam \
+		-L "$databasename"/repeat_database/"$databasename".gff3.bed
+#	echo "$bam" "$sample_name"
+#done
