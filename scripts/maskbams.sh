@@ -10,8 +10,6 @@
 #SBATCH --array=0-173%20
 
 # Set database name
-#species=("andropogon" "tripsacum")
-#databasename="${species[$SLURM_ARRAY_TASK_ID]}"
 databasename="andropogon"
 echo $databasename
 
@@ -21,7 +19,6 @@ mapfile -t bam_array < $bamlist
 
 # Identify bam as the sample with the array number in bamlist
 bam="${bam_array[$SLURM_ARRAY_TASK_ID]}"
-#sample_name="${bam%.bam}"
 sample_name=$(echo "$bam" | sed 's|.*/||; s/\.dedup\.bam$//')
 
 echo $bam
@@ -30,15 +27,8 @@ echo $sample_name
 # Load modules
 module load samtools # v1.19.2
 
-#mkdir repeats_removed
 
 ## Remove Repeats from bams
-#for i in "${bam_array[@]}"
-#do
-#	echo $i
-#	sample_name="${i%.bam}"
 	samtools view $bam -b -h -o /dev/null \
 		-U "$databasename"/repeats_removed/"$sample_name".masked.bam \
 		-L "$databasename"/repeat_database/"$databasename".gff3.bed
-#	echo "$bam" "$sample_name"
-#done
