@@ -39,7 +39,6 @@ samtools view "$databasename"/repeats_removed/"$sample_name".masked.bam -b -h -o
 ## Quality filter
 mkdir -p "$databasename"/filtered
 
-samtools view -b -q 10 "$databasename"/offtarget_removed/"$sample_name".offtarget.bam > "$databasename"/filtered/"$sample_name".filte
-red.bam
+samtools view -b -q 10 "$databasename"/offtarget_removed/"$sample_name".offtarget.bam > "$databasename"/filtered/"$sample_name".filtered.bam
 
 rm "$databasename"/offtarget_removed/"$sample_name".offtarget.bam
