@@ -33,8 +33,8 @@ with_mate_ondiffchr with_mate_ondiffchr_lowqual" > "$databasename"/metadata/"$ou
 
 ## Loop through BAM files
 while read name ; do
-	mv $databasename/filtered/$name $databasename/filtered/$name.red.bam
-	echo -n "$databasename/filtered/"$name"red.bam  " >> "$databasename"/metadata/"$out"
-	samtools flagstat "$databasename"/filtered/"$name"red.bam -O tsv | awk '{printf "%s ", $1}' >> "$databasename"/metadata/"$out"
+#	mv $databasename/filtered/$name $databasename/filtered/"$name"red.bam
+	echo -n "$databasename/filtered/"$name"  " >> "$databasename"/metadata/"$out"
+	samtools flagstat "$databasename"/filtered/"$name" -O tsv | awk '{printf "%s ", $1}' >> "$databasename"/metadata/"$out"
 	echo "" >> "$databasename"/metadata/"$out"
 done < "$databasename"/filtered_bamlist.txt
