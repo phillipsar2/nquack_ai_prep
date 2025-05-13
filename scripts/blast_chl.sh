@@ -13,12 +13,15 @@ module load bedtools2/2.31.1
 module load samtools # 1.19.2-xxdq3op
 
 # Set database name
-databasename="andropogon"
+databasename="tripsacum"
 echo $databasename
 
 # Set references
-ref="../andropogon/data/genome/JGIgenome/v1/Andropogon_gerardii_var_Kellogg_1272_HAP1_V1_release/Andropogon_gerardii_var_Kellogg_1272/sequences/Andropogon_gerardii_var_Kellogg_1272.mainGenome.fasta"
-chloroplast="andropogon/blast/NC_040111.1.fasta"
+#ref="../andropogon/data/genome/JGIgenome/v1/Andropogon_gerardii_var_Kellogg_1272_HAP1_V1_release/Andropogon_gerardii_var_Kellogg_1272/sequences/Andropogon_gerardii_var_Kellogg_1272.mainGenome.fasta"
+#chloroplast="andropogon/blast/NC_040111.1.fasta"
+
+ref="/group/jrigrp10/tripsacum_dact/data/genome/v1/Td-KS_B6_1-Draft-PanAnd-1.0.noalternate.fasta"
+chloroplast="/group/jrigrp10/tripsacum_dact/data/repeat_abundance/repeat_seq/chloroplast.fasta"
 
 # Create list of masked bam files
 ls "$databasename"/repeats_removed > "$databasename"/masked_bamlist.txt

@@ -7,14 +7,14 @@
 #SBATCH -p high2
 #SBATCH -t 2-00:00
 #SBATCH --mem 2G
-#SBATCH --array=0-173%20
+#SBATCH --array=0-41%20
 
 module load ncbi-rmblastn/2.14.0
 module load bedtools2/2.31.1
 module load samtools # 1.19.2-xxdq3op
 
 # Set database name
-databasename="andropogon"
+databasename="tripsacum"
 echo $databasename
 
 # Create list of masked bams files from directory

@@ -16,8 +16,7 @@ Preparing the bam files associated with the PanAnd project for training in nQuac
 
 ## Project organization
 <pre>
-├── scriptsi
-│   ├── README.md
+├── scripts
 │   ├── gff3tobed.sh		<- (1) convert gff3repeat annotation to bedfile 
 │   ├── maskbams.sh		<- (2) mask bams using repeat bedfiles
 │   ├── blast_chl.sh            <- (3) identify off-target sites
@@ -28,9 +27,9 @@ Preparing the bam files associated with the PanAnd project for training in nQuac
 │   ├── species
 │   |   ├── repeatdatabse	<- gff3 and related files 
 │   |   ├── repeats_removed	<- repeat-masked bams
-│   |   ├── blast
-│   |   ├── filtered
-│   |   └── metadata
+│   |   ├── blast		<- blast database
+│   |   ├── filtered		<- final filtered bams (to be submitted)
+│   |   └── metadata		<- summary statistics on filtered bams (to be submitted)
 │   └── structure
 ├── 
 ├── 

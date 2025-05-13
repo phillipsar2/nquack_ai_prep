@@ -11,14 +11,14 @@
 module load samtools # 1.19.2-xxdq3op
 
 # Set database name
-databasename="andropogon"
+databasename="tripsacum"
 echo $databasename
 
 # Set final file name
 # Tripsacum_Phillips_stat.txt
 # Populus_stat.txt
 # Andropogon_stat.txt
-out="Andropogon_stat.txt"
+out="Tripsacum_Phillips_stat.txt"
 
 # Create bamlist
 ls "$databasename"/filtered > "$databasename"/filtered_bamlist.txt

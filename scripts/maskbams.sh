@@ -7,10 +7,10 @@
 #SBATCH -p high2
 #SBATCH -t 2-00:00
 #SBATCH --mem 1G
-#SBATCH --array=0-173%20
+#SBATCH --array=0-41%20
 
 # Set database name
-databasename="andropogon"
+databasename="tripsacum"
 echo $databasename
 
 # Load list of bam files from bamlist txt file into bam_array object
@@ -27,6 +27,7 @@ echo $sample_name
 # Load modules
 module load samtools # v1.19.2
 
+mkdir -p "$databasename"/repeats_removed
 
 ## Remove Repeats from bams
 	samtools view $bam -b -h -o /dev/null \
